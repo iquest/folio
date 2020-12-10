@@ -26,8 +26,21 @@ init = ->
       delimiter: ', '
       plugins: ['remove_button']
       create: createOption
-      options: makeItems($formGroup.data('collection'))
       maxOptions: 50000
+      preload: 'focus'
+      onChange: (_value) ->
+        $this.trigger('change')
+      load: (q, callback) ->
+        $.ajax
+          url: '/console/api/tags/react_select'
+          method: 'GET'
+          data:
+            q: q
+            context: $this.data('context')
+          error: ->
+            callback()
+          success: (res) ->
+            callback(res.data.map(optionMapper))
       render:
         option_create: (data, escape) ->
           """

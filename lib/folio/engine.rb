@@ -19,6 +19,10 @@ module Folio
         controller.send(:include, Folio::DeviseExtension)
       end
 
+      Dir.glob(Folio::Engine.root + 'app/decorators/**/*_decorator*.rb').each do |c|
+        require_dependency(c)
+      end
+
       Dir.glob(Rails.root + 'app/decorators/**/*_decorator*.rb').each do |c|
         require_dependency(c)
       end
