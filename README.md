@@ -1,8 +1,9 @@
 # Folio
-Short description and motivation.
+Folio is CMS engine, which enables You to build application **pages from atoms** (tiny blocks with various behavior) **and molecules** (container for set of atoms).
 
-## Usage
-Run `bundle exec rails app:folio:prepare_dummy_app`.
+This is done in `/console`.
+
+In (Folio) Console You can also enable catalog-type management of models from Your application (eg. Users, Posts, Products ...), see [Scaffolding](#markdown-header-scaffolding).
 
 ## Installation
 ### Build Your app with Sprockets, not Webpacker
@@ -129,6 +130,9 @@ Run
 ```
 bin/rails s
 ```
+
+For fully function dummy app You need to copy `redactor` files to `test/dummy/vendor`. Try to use/study `bundle exec rails app:folio:prepare_dummy_app`.
+
 
 ## License
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
