@@ -61,7 +61,10 @@ Take a look to, not only Folio, handy generators by
 ```bash
 $ rails g
 ```
-
+## Note about Redactor
+If you want to use `:richtext` fields, you will need to buy a licence for [Redactor editor](https://imperavi.com/redactor/), and copy its files
+to `vendor/assets/assets/redactor` of your app.
+If you don't, just create that folder with empty `redactor.js` and `redactor.css` files in it.
 
 ## Attachments
 
@@ -131,7 +134,7 @@ Run
 bin/rails s
 ```
 
-For fully function dummy app You need to copy `redactor` files to `test/dummy/vendor`. Try to use/study `bundle exec rails app:folio:prepare_dummy_app`.
+For fully function dummy app You need to copy `redactor` files to `test/dummy/vendor` (see above). Try to use/study `bundle exec rails app:folio:prepare_dummy_app`.
 
 
 ## License
