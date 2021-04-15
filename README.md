@@ -5,6 +5,32 @@ Short description and motivation.
 Run `bundle exec rails app:folio:prepare_dummy_app`.
 
 ## Installation
+### Build Your app with Sprockets, not Webpacker
+Folio uses Sprockets assets pipeline and PostgreSQL, so please build Your app with this in mind.
+
+```bash
+ $ rails new my_app --skip-yarn --skip-bootsnap --skip-webpack-install -d postgresql
+```
+
+or in existing app with Webpacker
+
+- in `Gemfile`
+  - delete `gem "webpacker"`
+  - add
+    ```ruby
+    gem 'sprockets', '~> 4'
+    gem 'sprockets-rails', require: 'sprockets/railtie'
+    ```
+- replace content of `app/assets/config/manifets.js` with
+  ```javascript
+  //= link application.js
+  //= link application.css
+  ```
+- change in `app/views/layout/application.html.erb`  helper `javascript_pack_tag` to `javascript_include_tag`
+
+
+### Add Folio gem
+
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -12,20 +38,23 @@ gem 'folio', github: 'sinfin/folio'
 ```
 
 And then execute:
+
 ```bash
 $ bundle
-```
-
-Run:
-```bash
 $ rails generate folio:install
 ```
-which will copy bunch of things into your, hopefilly clean, app
 
-Then run migrations
+This will copy bunch of things into your, hopefully clean, app. Verify that `config/database.yml` is set according to Your needs.
+
+And then execute:
+
 ```bash
+$ bundle
 $ rails db:migrate
+$ rails db:seed
 ```
+
+which should add folio tables and some crucial records (default account and `Folio::Page`).
 
 Take a look to, not only Folio, handy generators by
 ```bash
