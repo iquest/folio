@@ -65,6 +65,9 @@ class Folio::GenerateThumbnailJob < Folio::ApplicationJob
         # https://github.com/markevans/dragonfly/issues/483
         thumbnail = image.file
                          .process_pdf(size)
+                         .thumb(size, format: :jpg,
+                                      x: x,
+                                      y: y)
                          .encode("jpg", "-quality #{quality}")
                          .jpegoptim
       else

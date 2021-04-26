@@ -77,10 +77,10 @@ Dragonfly.app.configure do
     end
   end
 
-  processor :process_pdf do |content, size, *args|
+  processor :process_pdf do |content, *args|
     # resize & keep only one page in one step
     content.shell_update do |old_path, new_path|
-      "convert #{old_path}\[0\] -resize #{size} -background white -alpha remove #{new_path}"
+      "convert #{old_path}\[0\] -background white -alpha remove #{new_path}"
     end
   end
 
