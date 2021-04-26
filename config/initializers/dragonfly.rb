@@ -77,6 +77,13 @@ Dragonfly.app.configure do
     end
   end
 
+  processor :process_pdf do |content, size, *args|
+    # resize & keep only one page in one step
+    content.shell_update do |old_path, new_path|
+      "convert #{old_path}\[0\] -resize #{size} -background white -alpha remove #{new_path}"
+    end
+  end
+
   analyser :metadata do |content|
     if shell("which", "exiftool").blank?
       msg = "Missing ExifTool binary. Metadata not processed."
