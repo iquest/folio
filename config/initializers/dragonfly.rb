@@ -2,6 +2,7 @@
 
 require "dragonfly"
 require "dragonfly/s3_data_store"
+require "dragonfly_libvips"
 require "open3"
 
 Dragonfly.logger = Rails.logger
@@ -26,7 +27,8 @@ def shell(*command)
 end
 
 Dragonfly.app.configure do
-  plugin :imagemagick
+  plugin :libvips
+  # plugin :imagemagick
 
   processor :cmyk_to_srgb do |content, *args|
     if /CMYK/.match?(shell("identify", content.file.path))
