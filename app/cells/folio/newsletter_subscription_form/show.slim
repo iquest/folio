@@ -3,15 +3,25 @@ div class=wrap_class
                     url: newsletter_subscriptions_path, \
                     html: { class: 'folio-newsletter-subscription-form' } do |f|
 
-    = f.input :email, as: :email, \
-                      input_html: { placeholder: options[:placeholder] }
+    .folio-newsletter-subscription-form-wrap-elements
+      .folio-newsletter-subscription-form-input-and-btn
+        = f.input :email, as: :email, \
+                          input_html: { placeholder: options[:placeholder] }
 
-    = hidden_options
+        = hidden_options
 
-    button type='submit' class=button_class == submit_text
+        button type='submit' class=button_class == submit_text
 
-  - if submitted
-    .folio-newsletter-subscription-form-message
-      = message
+      .folio-newsletter-subscription-form-captcha
+        - if ENV['RECAPTCHA_SITE_KEY'].present? && \
+              ENV['RECAPTCHA_SECRET_KEY'].present?
+          .folio-lead-form__recaptcha.form-group
+            = recaptcha_tags(script: false)
+            = f.error :verified_captcha, class: 'text-danger'
+
+    - if submitted
+      .folio-newsletter-subscription-form-message
+        = message
+
 
   span.folio-loader

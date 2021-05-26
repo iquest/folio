@@ -4,6 +4,7 @@ module Folio
   class NewsletterSubscriptionFormCell < SavingFolioCell
     include SimpleForm::ActionViewExtensions::FormHelper
     include Engine.routes.url_helpers
+    include ::Recaptcha::ClientHelper
 
     def newsletter_subscription
       @newsletter_subscription ||= (model || NewsletterSubscription.new)
