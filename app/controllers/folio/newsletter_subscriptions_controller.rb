@@ -4,7 +4,10 @@ module Folio
   class NewsletterSubscriptionsController < ApplicationController
     def create
       attrs = newsletter_subscription_params.merge(visit: current_visit)
-      @newsletter_subscription = NewsletterSubscription.new(attrs)
+      newsletter_subscription = NewsletterSubscription.new(attrs)
+      
+      @newsletter_subscription = check_recaptcha_if_needed(newsletter_subscription)
+      
       success = @newsletter_subscription.save
 
       NewsletterSubscriptionMailer.notification_email(@newsletter_subscription).deliver_later if success
@@ -25,6 +28,15 @@ module Folio
         else
           {}
         end
+      end
+
+      def check_recaptcha_if_needed(newsletter_subscription)
+        if ENV['RECAPTCHA_SITE_KEY'].present? &&
+           ENV['RECAPTCHA_SECRET_KEY'].present?
+          newsletter_subscription.verified_captcha = verify_recaptcha(model: newsletter_subscription)
+        end
+
+        newsletter_subscription
       end
   end
 end

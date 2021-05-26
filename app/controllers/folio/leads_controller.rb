@@ -2,6 +2,8 @@
 
 module Folio
   class LeadsController < ApplicationController
+    # include CaptchaVerification
+
     REMEMBER_OPTION_KEYS = [
       :note,
       :message,
