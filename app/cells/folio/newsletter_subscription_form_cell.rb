@@ -26,7 +26,7 @@ module Folio
 
     def button_class
       return options[:button_class] unless options[:button_class].nil?
-      'btn'
+      'btn folio-newsletter-subscription-btn'
     end
 
     def wrap_class

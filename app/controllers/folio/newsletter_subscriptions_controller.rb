@@ -2,6 +2,7 @@
 
 module Folio
   class NewsletterSubscriptionsController < ApplicationController
+    include CaptchaVerification
     def create
       attrs = newsletter_subscription_params.merge(visit: current_visit)
       newsletter_subscription = NewsletterSubscription.new(attrs)
@@ -28,15 +29,6 @@ module Folio
         else
           {}
         end
-      end
-
-      def check_recaptcha_if_needed(newsletter_subscription)
-        if ENV['RECAPTCHA_SITE_KEY'].present? &&
-           ENV['RECAPTCHA_SECRET_KEY'].present?
-          newsletter_subscription.verified_captcha = verify_recaptcha(model: newsletter_subscription)
-        end
-
-        newsletter_subscription
       end
   end
 end

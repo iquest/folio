@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Folio::Lead < Folio::ApplicationRecord
+  include Folio::CaptchaValidation
   attr_accessor :verified_captcha
 
   belongs_to :visit, optional: true
@@ -67,12 +68,6 @@ class Folio::Lead < Folio::ApplicationRecord
 
     def skip_note_validation?
       false
-    end
-
-    def validate_verified_captcha
-      return if verified_captcha == true
-      return if verified_captcha.nil?
-      errors.add(:verified_captcha, :invalid)
     end
 end
 

@@ -2,7 +2,7 @@
 
 module Folio
   class LeadsController < ApplicationController
-    # include CaptchaVerification
+    include CaptchaVerification
 
     REMEMBER_OPTION_KEYS = [
       :note,
@@ -49,15 +49,6 @@ module Folio
         else
           {}
         end
-      end
-
-      def check_recaptcha_if_needed(lead)
-        if ENV['RECAPTCHA_SITE_KEY'].present? &&
-           ENV['RECAPTCHA_SECRET_KEY'].present?
-          lead.verified_captcha = verify_recaptcha(model: lead)
-        end
-
-        lead
       end
   end
 end

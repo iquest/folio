@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Folio::NewsletterSubscription < Folio::ApplicationRecord
+  include Folio::CaptchaValidation
   attr_accessor :verified_captcha
 
   belongs_to :visit, optional: true
@@ -27,13 +28,6 @@ class Folio::NewsletterSubscription < Folio::ApplicationRecord
   def self.clears_page_cache_on_save?
     false
   end
-
-  private
-    def validate_verified_captcha
-      return if verified_captcha == true
-      return if verified_captcha.nil?
-      errors.add(:verified_captcha, :invalid)
-    end
 end
 
 # == Schema Information

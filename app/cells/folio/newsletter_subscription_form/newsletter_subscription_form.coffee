@@ -17,4 +17,21 @@ $ ->
         .val(token)
 
       $.post($form.attr('action'), $form.serialize())
-        .always((response) -> $wrap.replaceWith(response))
+      .then (response) ->
+        $response = $(response)
+        $wrap.replaceWith($response)
+
+        $recaptcha = $response.find('.g-recaptcha')
+        if grecaptcha? and $recaptcha.length
+          grecaptcha.render $recaptcha[0]
+
+        $response.trigger('folio:submitted')
+        if $response.find('.folio-newsletter-subscription-form-message').length
+          $response.trigger('folio:success')
+        else
+          $response.trigger('folio:failure')
+
+      .catch ->
+        alert($wrap.data('failure'))
+        $wrap.find('input[type="submit"]').prop('disabled', false)
+        $wrap.removeClass('folio-newsletter-subscription-form-submitting')
