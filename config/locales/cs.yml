@@ -3,7 +3,7 @@ cs:
   all: Všechny
   dragonfly:
     invalid_format: Nepodporovaný formát
-  'false': Ne
+  "false": Ne
   folio:
     errors:
       show:
@@ -11,19 +11,19 @@ cs:
         error_400:
           text_line_1: Chybný požadavek
           text_line_2: Špatně formulovaný požadavek. Ověřte parametry v adrese.
-          title: '400'
+          title: "400"
         error_404:
           text_line_1: Stránka kterou hledáte neexistuje.
           text_line_2: Buďto máte špatný odkaz, nebo byla přesunuta.
-          title: '404'
+          title: "404"
         error_422:
           text_line_1: Změna nebyla povolena.
           text_line_2: Možná chcete udělat něco, co nemáte dovoleno.
-          title: '422'
+          title: "422"
         error_500:
           text_line_1: Omlouváme se, ale něco se rozbilo.
           text_line_2: Zkuste přejít na homepage, nebo se vraťte později.
-          title: '500'
+          title: "500"
     lead_form:
       email: E-mail
       failure: Zprávu se nepodařilo odeslat. Zkuste to prosíme později.
@@ -51,12 +51,17 @@ cs:
     publishable_hint:
       hint: Stránka je až do publikování viditelná jen pro přihlášené administrátory.
   head:
-    description: ''
+    description: ""
     title:
-      default: ''
+      default: ""
       separator: "|"
+  recaptcha:
+    errors:
+      verification_failed: Neplatné potvrzení
+      recaptcha_unreachable: Oops, we failed to validate your reCAPTCHA response. Please try again.
+
   time:
     formats:
       short_with_seconds: "%d %m %Y, %H:%M:%S"
       short: "%d %m %Y %H:%M"
-  'true': Ano
+  "true": Ano
