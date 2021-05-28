@@ -1,5 +1,12 @@
+merge = (xs...) ->
+  if xs?.length > 0
+    tap {}, (m) -> m[k] = v for k, v of x for x in xs
+
+tap = (o, fn) -> fn(o); o
+
 ADVANCED_OPTIONS =
   plugins: ['imagemanager', 'video', 'table', 'button', 'definedlinks']
+  buttons: ['format', 'bold', 'italic', 'deleted']
   imageUploadParam: 'file[file]'
   imageData:
     elements: 'input[name="authenticity_token"]'
@@ -20,9 +27,15 @@ OPTIONS =
   formatting: ['p', 'h2', 'h3', 'h4']
 
 window.folioConsoleInitRedactor = (node, options = {}) ->
+  redactorOptions = {}
+  try
+    redactorOptions = JSON.parse(node.dataset.redactorOptions || "{}")
+  catch
+    redactorOptions = {}
   return if node.classList.contains('redactor-source')
   opts = if options.advanced then ADVANCED_OPTIONS else OPTIONS
-  $R(node, opts)
+  mergedOpts = merge opts, redactorOptions
+  $R(node, mergedOpts)
 
 window.folioConsoleDestroyRedactor = (node) ->
   $R(node, 'destroy')
