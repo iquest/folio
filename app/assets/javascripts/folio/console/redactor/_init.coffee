@@ -24,7 +24,7 @@ ADVANCED_OPTIONS =
   formatting: ['p', 'h2', 'h3', 'h4']
 
 OPTIONS =
-  plugins: ['table', 'button', 'definedlinks']
+  plugins: ['table', 'button', 'definedlinks', 'properties']
   buttonsHide: ['file', 'image']
   toolbarFixed: false
   linkNewTab: true

@@ -15,6 +15,7 @@
 
 #= require ./redactor/_cs
 #= require ./redactor/_imagemanager
+#= require ./redactor/_properties
 #= require ./redactor/_video
 #= require ./redactor/_table
 #= require ./redactor/_button
