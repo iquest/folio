@@ -14,6 +14,12 @@ ADVANCED_OPTIONS =
   imageUpload: '/console/images.json'
   imageManagerJson: '/console/images.json'
   definedlinks: '/console/links.json'
+  linkNewTab: true
+  pasteLinkTarget: '_blank'
+  pastePlainText: true
+  linkTarget: '_blank'
+  linkNofollow: true
+  pasteLinks: true
   toolbarFixed: false
   lang: document.documentElement.lang
   formatting: ['p', 'h2', 'h3', 'h4']
@@ -22,6 +28,11 @@ OPTIONS =
   plugins: ['table', 'button', 'definedlinks']
   buttonsHide: ['file', 'image']
   toolbarFixed: false
+  linkNewTab: true
+  linkTarget: '_blank'
+  pasteLinkTarget: '_blank'
+  pastePlainText: true
+  pasteLinks: true
   definedlinks: '/console/links.json'
   lang: document.documentElement.lang
   formatting: ['p', 'h2', 'h3', 'h4']
