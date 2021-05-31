@@ -17,7 +17,6 @@ ADVANCED_OPTIONS =
   linkNewTab: true
   pasteLinkTarget: '_blank'
   pastePlainText: true
-  linkTarget: '_blank'
   linkNofollow: true
   pasteLinks: true
   toolbarFixed: false
@@ -29,7 +28,6 @@ OPTIONS =
   buttonsHide: ['file', 'image']
   toolbarFixed: false
   linkNewTab: true
-  linkTarget: '_blank'
   pasteLinkTarget: '_blank'
   pastePlainText: true
   pasteLinks: true
