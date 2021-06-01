@@ -5,8 +5,8 @@ merge = (xs...) ->
 tap = (o, fn) -> fn(o); o
 
 ADVANCED_OPTIONS =
-  plugins: ['imagemanager', 'video', 'table', 'button', 'definedlinks']
-  buttons: ['format', 'bold', 'italic', 'deleted']
+  plugins: ['imagemanager', 'video', 'table', 'button', 'definedlinks', 'properties']
+  buttons: ['format', 'bold', 'italic', 'deleted', 'list']
   imageUploadParam: 'file[file]'
   imageData:
     elements: 'input[name="authenticity_token"]'
@@ -24,13 +24,18 @@ ADVANCED_OPTIONS =
   formatting: ['p', 'h2', 'h3', 'h4']
 
 OPTIONS =
-  plugins: ['table', 'button', 'definedlinks', 'properties']
-  buttonsHide: ['file', 'image']
+  plugins: ['imagemanager', 'properties']
   toolbarFixed: false
   linkNewTab: true
   pasteLinkTarget: '_blank'
   pastePlainText: true
   pasteLinks: true
+  imageUploadParam: 'file[file]'
+  imageData:
+    elements: 'input[name="authenticity_token"]'
+    'file[type]': 'Folio::Image'
+  imageUpload: '/console/images.json'
+  imageManagerJson: '/console/images.json'
   definedlinks: '/console/links.json'
   lang: document.documentElement.lang
   formatting: ['p', 'h2', 'h3', 'h4']
