@@ -6,7 +6,7 @@ tap = (o, fn) -> fn(o); o
 
 ADVANCED_OPTIONS =
   plugins: ['imagemanager', 'video', 'table', 'button', 'definedlinks', 'properties']
-  buttons: ['format', 'bold', 'italic', 'deleted', 'list']
+  buttons: ['format', 'bold', 'italic', 'deleted', 'list', 'image']
   imageUploadParam: 'file[file]'
   imageData:
     elements: 'input[name="authenticity_token"]'
