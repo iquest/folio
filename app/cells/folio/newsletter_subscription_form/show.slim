@@ -19,9 +19,9 @@ div class=wrap_class
             = recaptcha_tags(script: false)
       = f.error :verified_captcha, class: 'text-danger'
 
-    - if submitted
-      .folio-newsletter-subscription-form-message
-        = message
+  - if submitted
+    .folio-newsletter-subscription-form-message
+      = message
 
 
   span.folio-loader

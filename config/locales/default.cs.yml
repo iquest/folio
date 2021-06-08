@@ -3,63 +3,63 @@ cs:
   activerecord:
     errors:
       messages:
-        record_invalid: 'Validace je neúspešná: %{errors}'
+        record_invalid: "Validace je neúspešná: %{errors}"
         restrict_dependent_destroy:
           has_many: Nemůžu smazat položku protože existuje závislé/ý %{record}
           has_one: Nemůžu smazat položku protože existuje závislá/ý/é %{record}
   date:
     abbr_day_names:
-    - Ne
-    - Po
-    - Út
-    - St
-    - Čt
-    - Pá
-    - So
+      - Ne
+      - Po
+      - Út
+      - St
+      - Čt
+      - Pá
+      - So
     abbr_month_names:
-    -
-    - led
-    - úno
-    - bře
-    - dub
-    - kvě
-    - čvn
-    - čvc
-    - srp
-    - zář
-    - říj
-    - lis
-    - pro
+      -
+      - led
+      - úno
+      - bře
+      - dub
+      - kvě
+      - čvn
+      - čvc
+      - srp
+      - zář
+      - říj
+      - lis
+      - pro
     day_names:
-    - neděle
-    - pondělí
-    - úterý
-    - středa
-    - čtvrtek
-    - pátek
-    - sobota
+      - neděle
+      - pondělí
+      - úterý
+      - středa
+      - čtvrtek
+      - pátek
+      - sobota
     formats:
       default: "%d. %m. %Y"
       long: "%d. %B %Y"
       short: "%d %b"
     month_names:
-    -
-    - leden
-    - únor
-    - březen
-    - duben
-    - květen
-    - červen
-    - červenec
-    - srpen
-    - září
-    - říjen
-    - listopad
-    - prosinec
+      -
+      - leden
+      - únor
+      - březen
+      - duben
+      - květen
+      - červen
+      - červenec
+      - srpen
+      - září
+      - říjen
+      - listopad
+      - prosinec
     order:
-    - :day
-    - :month
-    - :year
+      - :day
+      - :month
+      - :year
   datetime:
     distance_in_words:
       about_x_hours:
@@ -134,7 +134,7 @@ cs:
       invalid: není platná hodnota
       less_than: musí být méně než %{count}
       less_than_or_equal_to: musí být méně nebo rovno %{count}
-      model_invalid: 'validace selhala: %{errors}'
+      model_invalid: "validace selhala: %{errors}"
       not_a_number: není číslo
       not_an_integer: musí být celé číslo
       odd: musí být liché číslo
@@ -146,7 +146,7 @@ cs:
       too_short: je příliš krátký/á/é (min. %{count} znaků)
       wrong_length: nemá správnou délku (očekáváno %{count} znaků)
     template:
-      body: 'Následující pole obsahují chybně vyplněné údaje: '
+      body: "Následující pole obsahují chybně vyplněné údaje: "
       header:
         few: Při ukládání objektu %{model} došlo ke %{count} chybám a nebylo možné jej uložit
         one: Při ukládání objektu %{model} došlo k chybám a nebylo jej možné uložit
@@ -183,9 +183,9 @@ cs:
           quadrillion: Kvadrilion
           thousand: Tisíc
           trillion: Bilion
-          unit: ''
+          unit: ""
       format:
-        delimiter: ''
+        delimiter: ""
         precision: 1
         significant: false
         strip_insignificant_zeros: false
@@ -201,11 +201,11 @@ cs:
           tb: TB
     percentage:
       format:
-        delimiter: ''
+        delimiter: ""
         format: "%n%"
     precision:
       format:
-        delimiter: ''
+        delimiter: ""
   support:
     array:
       last_word_connector: " a "

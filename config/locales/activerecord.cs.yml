@@ -57,6 +57,8 @@ cs:
           attributes:
             email:
               invalid: Neplatná e-mailová adresa
+            verified_captcha:
+              invalid: Neplatné potvrzení
     models:
       folio/account:
         few: Uživatelé
