@@ -1,4 +1,4 @@
-div class=wrap_class
+div class=[wrap_class, submitted ? 'submitted' : '']
   = simple_form_for newsletter_subscription, \
                     url: newsletter_subscriptions_path, \
                     html: { class: 'folio-newsletter-subscription-form' } do |f|
