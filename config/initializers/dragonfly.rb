@@ -26,14 +26,20 @@ def shell(*command)
 end
 
 Dragonfly.app.configure do
-  plugin :imagemagick
+  convert_command = ENV["CONVERT_COMMAND"].present? ? ENV["CONVERT_COMMAND"] : "convert"
+  identify_command = ENV["IDENTIFY_COMMAND"].present? ? ENV["IDENTIFY_COMMAND"] : "identify"
+  jpegoptim_command = ENV["JPEGOPTIM_COMMAND"].present? ? ENV["JPEGOPTIM_COMMAND"] : "jpegtran"
+
+  plugin :imagemagick,
+    convert_command: convert_command,   # defaults to "convert"
+    identify_command: identify_command  # defaults to "identify"
 
   processor :cmyk_to_srgb do |content, *args|
     if /CMYK/.match?(shell('identify', content.file.path))
       content.shell_update escape: false do |old_path, new_path|
         cmyk_icc = "#{Folio::Engine.root}/data/icc_profiles/PSOuncoated_v3_FOGRA52.icc"
         srgb_icc = "#{Folio::Engine.root}/data/icc_profiles/sRGB_v4_ICC_preference.icc"
-        "convert -profile #{cmyk_icc} '#{old_path}' -profile #{srgb_icc} -colorspace sRGB '#{new_path}'"
+        "#{convert_command} -profile #{cmyk_icc} '#{old_path}' -profile #{srgb_icc} -colorspace sRGB '#{new_path}'"
       end
     end
   end
@@ -50,7 +56,7 @@ Dragonfly.app.configure do
       content
     else
       content.shell_update do |old_path, new_path|
-        "jpegtran -optimize -outfile #{new_path} #{old_path}"  # The command sent to the command line
+        "#{jpegoptim_command} -optimize -outfile #{new_path} #{old_path}"  # The command sent to the command line
       end
     end
   end
