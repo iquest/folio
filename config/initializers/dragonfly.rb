@@ -45,7 +45,7 @@ Dragonfly.app.configure do
   end
 
   processor :flatten do |content, *args|
-    content.process! :convert, '-flatten'
+    convert(content, '-flatten')
   end
 
   processor :jpegoptim do |content, *args|
@@ -70,7 +70,7 @@ Dragonfly.app.configure do
   end
 
   processor :add_white_background do |content, *args|
-    content.process! :convert, '-background white -alpha remove'
+    convert(content, '-background white -alpha remove')
   end
 
   secret Rails.application.secrets.dragonfly_secret
